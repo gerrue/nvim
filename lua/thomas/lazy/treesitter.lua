@@ -7,7 +7,7 @@ return {
         ensure_installed = { "typescript", "javascript", "java", "python", "vim", "lua", "vimdoc", "json" },
         sync_install = false,
         indent = {
-          enable = true
+          disable = true
         },
         highlight = {
           enable = true,

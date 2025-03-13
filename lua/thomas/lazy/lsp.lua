@@ -18,9 +18,9 @@ local handlers = {
   function (server_name)
     require('lspconfig')[server_name].setup({})
   end,
-  ['tsserver'] = function ()
+  ['ts_ls'] = function ()
     local lspconfig = require('lspconfig')
-    lspconfig.tsserver.setup({
+    lspconfig.ts_ls.setup({
       handlers = {
         ["textDocument/publishDiagnostics"] = vim.lsp.with(
           vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -41,20 +41,63 @@ local handlers = {
   ['vuels'] = function ()
     local lspconfig = require('lspconfig')
     lspconfig.vuels.setup({
-      filetypes = {},
+      cmd = { "vls" },
+      filetypes = { 'vue' },
+      init_options = {
+        config = {
+          css = {},
+          emmet = {},
+          html = {
+            suggest = {}
+          },
+          javascript = {
+            format = {}
+          },
+          stylusSupremacy = {},
+          typescript = {
+            format = {}
+          },
+          vetur = {
+            completion = {
+              autoImport = true,
+              tagCasing = "kebab",
+              useScaffoldSnippets = true
+            },
+            format = {
+              defaultFormatter = {
+                html = "none",
+                js = "prettier",
+                ts = "prettier"
+              },
+              defaultFormatterOptions = {},
+              scriptInitialIndent = false,
+              styleInitialIndent = false
+            },
+            useWorkspaceDependencies = false,
+            validation = {
+              script = true,
+              style = true,
+              template = true,
+              templateProps = true,
+              interpolation = true
+            },
+            experimental = {
+              templateInterpolationService = true
+            }
+          }
+        }
+      }
     })
   end,
-  ['volar'] = function ()
-    local lspconfig = require('lspconfig')
-    lspconfig.volar.setup({
-      settings = {
-        volar = {
-          autoClosingTags = true,
-          autoCreateQuotes = true,
+  ['yamlls'] = function ()
+    local lspconfig = require'lspconfig'
+    lspconfig.yamlls.setup{
+      yaml = {
+        schemaStore = {
+          enable = true
         }
-      },
-      filetypes = { 'vue' },
-    })
+      }
+    }
   end
 }
 
@@ -73,9 +116,10 @@ return {
           "eslint",
           "lua_ls",
           "pyright",
-          "tsserver",
+          "ts_ls",
           "vimls",
           "volar",
+          "yamlls",
         }
       })
     end

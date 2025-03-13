@@ -7,6 +7,7 @@ vim.cmd([[
   set number ruler rnu
   set autoindent smartindent
   syntax on
-  inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
-  inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 ]])
+--[[
+inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
+]]--
