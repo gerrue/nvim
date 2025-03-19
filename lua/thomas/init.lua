@@ -6,6 +6,8 @@ vim.cmd([[
   set expandtab
   set number ruler rnu
   set autoindent smartindent
+  set encoding=UTF-8
+  set guifont=DroidSansMono_Nerd_Font:h11
   syntax on
 ]])
 --[[
