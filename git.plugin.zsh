@@ -298,7 +298,8 @@ alias gluc='git pull upstream $(git_current_branch)'
 alias glum='git pull upstream $(git_main_branch)'
 alias gps='git push'
 alias gpd='git push --dry-run'
-alias gpso='git push origin $(git_current_branch)'
+# alias gpso='git push origin $(git_current_branch)'
+alias gpso='git push --set-upstream origin $(git_current_branch)'
 
 function ggf() {
   [[ "$#" != 1 ]] && local b="$(git_current_branch)"
