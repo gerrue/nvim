@@ -107,13 +107,8 @@ return {
     dependencies =  {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
-      "saghen/blink.cmp",
     },
     config = function ()
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
-
-      lspconfig['lua_ls'].setup({ capabilities = capabilities })
       require("mason").setup()
       require("mason-lspconfig").setup({
         handlers = handlers,
